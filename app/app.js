@@ -18,10 +18,15 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import useScroll from 'react-router-scroll';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 import configureStore from './store';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/lib/sanitize.css';
+
+// Remove 300ms delay upon tap on mobile
+injectTapEventPlugin();
 
 // Create redux store with history
 // this uses the singleton hashHistory provided by react-router
@@ -48,29 +53,31 @@ const rootRoute = {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router
-      history={history}
-      routes={rootRoute}
-      render={
-        // Scroll to top when going to a new page, imitating default browser
-        // behaviour
-        applyRouterMiddleware(
-          useScroll(
-            (prevProps, props) => {
-              if (!prevProps || !props) {
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <Router
+        history={history}
+        routes={rootRoute}
+        render={
+          // Scroll to top when going to a new page, imitating default browser
+          // behaviour
+          applyRouterMiddleware(
+            useScroll(
+              (prevProps, props) => {
+                if (!prevProps || !props) {
+                  return true;
+                }
+
+                if (prevProps.location.pathname !== props.location.pathname) {
+                  return [0, 0];
+                }
+
                 return true;
               }
-
-              if (prevProps.location.pathname !== props.location.pathname) {
-                return [0, 0];
-              }
-
-              return true;
-            }
+            )
           )
-        )
-      }
-    />
+        }
+      />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('app')
 );
