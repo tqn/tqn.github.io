@@ -8,21 +8,20 @@
 
 import React from 'react';
 import { AppBar, Paper } from 'material-ui';
-
-const styles = {
-  mainContainer: {
-    margin: `${30}px auto`,
-    padding: `${30}px`,
-    maxWidth: `${(10 / 12) * 100}vw`,
-  },
-};
-
+import { Row, Col } from 'react-flexbox-grid';
+import styles from './styles.css';
 
 function App(props) {
   return (
     <div>
       <AppBar title="Tej Qu Nair" />
-      <Paper style={styles.mainContainer} children={props.children} />
+      <Row>
+        <Col xs={12} lgOffset={2} lg={8}>
+          <Paper className={styles.mainContainer}>
+            {props.children}
+          </Paper>
+        </Col>
+      </Row>
     </div>
   );
 }
