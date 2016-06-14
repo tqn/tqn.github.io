@@ -15,11 +15,11 @@ import 'file?name=[name].[ext]!./.htaccess';      // eslint-disable-line import/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyRouterMiddleware, Router, hashHistory } from 'react-router';
+import { applyRouterMiddleware, Router, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 import { syncHistoryWithStore } from 'react-router-redux';
 import useScroll from 'react-router-scroll';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 import configureStore from './store';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
@@ -32,6 +32,7 @@ injectTapEventPlugin();
 // this uses the singleton hashHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const hashHistory = useRouterHistory(createHashHistory)();`
+const hashHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 const initialState = {};
 const store = configureStore(initialState, hashHistory);
 
@@ -53,31 +54,29 @@ const rootRoute = {
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <Router
-        history={history}
-        routes={rootRoute}
-        render={
-          // Scroll to top when going to a new page, imitating default browser
-          // behaviour
-          applyRouterMiddleware(
-            useScroll(
-              (prevProps, props) => {
-                if (!prevProps || !props) {
-                  return true;
-                }
-
-                if (prevProps.location.pathname !== props.location.pathname) {
-                  return [0, 0];
-                }
-
+    <Router
+      history={history}
+      routes={rootRoute}
+      render={
+        // Scroll to top when going to a new page, imitating default browser
+        // behaviour
+        applyRouterMiddleware(
+          useScroll(
+            (prevProps, props) => {
+              if (!prevProps || !props) {
                 return true;
               }
-            )
+
+              if (prevProps.location.pathname !== props.location.pathname) {
+                return [0, 0];
+              }
+
+              return true;
+            }
           )
-        }
-      />
-    </MuiThemeProvider>
+        )
+      }
+    />
   </Provider>,
   document.getElementById('app')
 );

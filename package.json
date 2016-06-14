@@ -136,7 +136,7 @@
     "express": "^4.13.4",
     "flexboxgrid": "^6.3.0",
     "fontfaceobserver": "^1.7.1",
-    "history": "^2.1.0",
+    "history": "^2.1.2",
     "immutable": "^3.8.1",
     "material-ui": "^0.15.0",
     "react": "^15.0.1",
@@ -220,7 +220,7 @@
     "stylelint": "^6.3.3",
     "stylelint-config-standard": "^7.0.0",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.12",
+    "webpack": "2.1.0-beta.12",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   }

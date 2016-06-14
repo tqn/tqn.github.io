@@ -7,27 +7,48 @@
  */
 
 import React from 'react';
-import { AppBar, Paper } from 'material-ui';
+import { colors, MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 import { Row, Col } from 'react-flexbox-grid';
-import styles from './styles.css';
+import TqnAppBar from '../../components/TqnAppBar';
 
-function App(props) {
-  return (
-    <div>
-      <AppBar title="Tej Qu Nair" />
-      <Row>
-        <Col xs={12} lgOffset={2} lg={8}>
-          <Paper className={styles.mainContainer}>
-            {props.children}
-          </Paper>
-        </Col>
-      </Row>
-    </div>
-  );
-}
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: colors.indigo500,
+    primary2Color: colors.indigo700,
+    accent1Color: colors.orangeA200,
+    pickerHeaderColor: colors.indigo500,
+  },
+});
 
-App.propTypes = {
-  children: React.PropTypes.node,
+const mainColProps = {
+  xs: 12,
+  lg: 10,
+  lgOffset: 1,
 };
 
-export default App;
+export default class App extends React.Component {
+
+  static propTypes = {
+    children: React.PropTypes.node,
+  };
+
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  render() {
+    return (
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <TqnAppBar colProps={mainColProps} />
+          <Row>
+            <Col {...mainColProps}>
+              {this.props.children}
+            </Col>
+          </Row>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}

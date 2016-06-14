@@ -5,10 +5,13 @@
  */
 
 import React from 'react';
+import CardPadded from '../CardPadded';
 
 export function HomePage() {
   return (
-    <p>This is the Homepage!</p>
+    <CardPadded>
+      <p>This is the home page!</p>
+    </CardPadded>
   );
 }
 

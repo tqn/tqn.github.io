@@ -5,10 +5,13 @@
  */
 
 import React from 'react';
+import CardPadded from '../CardPadded';
 
 export function NotFound() {
   return (
-    <h1>Page Not Found</h1>
+    <CardPadded>
+      <p>Page not found</p>
+    </CardPadded>
   );
 }
 
