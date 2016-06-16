@@ -1,0 +1,41 @@
+// made according to https://material.google.com/style/typography.html
+
+$thin: 100;
+$extra-light: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$spxi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$black: 900;
+
+.h1 {
+  font-size: 112px;
+  font-weight: $light;
+}
+
+.h2 {
+  font-size: 56px;
+  font-weight: $normal;
+}
+
+.h3 {
+  font-size: 45px;
+  font-weight: $normal;
+}
+
+.h4 {
+  font-size: 34px;
+  font-weight: $normal;
+}
+
+.h5 {
+  font-size: 24px;
+  font-weight: $normal;
+}
+
+.h6 {
+  font-size: 20px;
+  font-weight: $medium;
+}

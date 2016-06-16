@@ -9,7 +9,7 @@ import { Paper } from 'material-ui';
 
 import styles from './styles.css';
 
-class CardPadded extends React.Component {
+export default class CardPadded extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,5 +22,3 @@ class CardPadded extends React.Component {
     );
   }
 }
-
-export default CardPadded;

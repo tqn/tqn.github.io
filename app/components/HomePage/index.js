@@ -5,13 +5,21 @@
  */
 
 import React from 'react';
-import CardPadded from '../CardPadded';
+import C from '../CardPadded';
+import {
+  H4,
+} from '../Headers';
 
 export function HomePage() {
   return (
-    <CardPadded>
-      <p>This is the home page!</p>
-    </CardPadded>
+    <div>
+      <C>
+        <p>This is the home page!</p>
+      </C>
+      <C>
+        <H4>Second panel header</H4>
+      </C>
+    </div>
   );
 }
 
