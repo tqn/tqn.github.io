@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { colors, MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
-import { Row, Col } from 'react-flexbox-grid';
+import { contentColProps } from '../../responsive';
 import TqnAppBar from '../../components/TqnAppBar';
 
 const muiTheme = getMuiTheme({
@@ -19,12 +19,6 @@ const muiTheme = getMuiTheme({
     pickerHeaderColor: colors.indigo500,
   },
 });
-
-const mainColProps = {
-  xs: 12,
-  lg: 10,
-  lgOffset: 1,
-};
 
 export default class App extends React.Component {
 
@@ -41,12 +35,8 @@ export default class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <TqnAppBar colProps={mainColProps} />
-          <Row>
-            <Col {...mainColProps}>
-              {this.props.children}
-            </Col>
-          </Row>
+          <TqnAppBar colProps={contentColProps} />
+          {this.props.children}
         </div>
       </MuiThemeProvider>
     );

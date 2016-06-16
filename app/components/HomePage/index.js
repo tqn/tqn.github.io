@@ -5,22 +5,36 @@
  */
 
 import React from 'react';
-import C from '../CardPadded';
+import { Row, Col } from 'react-flexbox-grid';
+import { contentColProps } from '../../responsive';
+import CardPadded from '../CardPadded';
 import {
   H4,
 } from '../Headers';
 
-export function HomePage() {
-  return (
-    <div>
-      <C>
-        <p>This is the home page!</p>
-      </C>
-      <C>
-        <H4>Second panel header</H4>
-      </C>
-    </div>
-  );
-}
+export default class HomePage extends React.Component {
 
-export default HomePage;
+  static propTypes = {
+    sectionStyles: React.PropTypes.object,
+  };
+
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  render() {
+    return (
+      <Row>
+        <Col {...contentColProps}>
+          <CardPadded {...this.props.sectionStyles}>
+            <p>This is the home page!</p>
+          </CardPadded>
+          <CardPadded {...this.props.sectionStyles}>
+            <H4>Second panel header</H4>
+          </CardPadded>
+        </Col>
+      </Row>
+    );
+  }
+}
