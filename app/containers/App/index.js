@@ -10,6 +10,7 @@ import React from 'react';
 import { colors, MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 import { contentColProps } from '../../responsive';
 import TqnAppBar from '../../components/TqnAppBar';
+import './styles.css';
 
 const muiTheme = getMuiTheme({
   palette: {

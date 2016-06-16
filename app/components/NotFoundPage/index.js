@@ -8,9 +8,6 @@ import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { contentColProps } from '../../responsive';
 import CardPadded from '../CardPadded';
-import {
-  H2,
-} from '../Headers';
 
 export default class NotFoundPage extends React.Component {
 
@@ -28,7 +25,7 @@ export default class NotFoundPage extends React.Component {
       <Row>
         <Col {...contentColProps}>
           <CardPadded {...this.props.sectionStyles}>
-            <H2>Page not found</H2>
+            <h2>Page not found</h2>
           </CardPadded>
         </Col>
       </Row>

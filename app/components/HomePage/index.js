@@ -8,9 +8,6 @@ import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { contentColProps } from '../../responsive';
 import CardPadded from '../CardPadded';
-import {
-  H4,
-} from '../Headers';
 
 export default class HomePage extends React.Component {
 
@@ -31,7 +28,7 @@ export default class HomePage extends React.Component {
             <p>This is the home page!</p>
           </CardPadded>
           <CardPadded {...this.props.sectionStyles}>
-            <H4>Second panel header</H4>
+            <h4>Second panel header</h4>
           </CardPadded>
         </Col>
       </Row>
