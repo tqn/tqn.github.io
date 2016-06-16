@@ -23,11 +23,6 @@ module.exports = (options) => ({
       exclude: /node_modules/,
       loader: options.cssLoaders,
     }, {
-      // Compile sass first then treat it as normal CSS
-      test: /\.s[ac]ss$/,
-      exclude: /node_modules/,
-      loader: `${options.cssLoaders}!sass`,
-    }, {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
       // Since we require these CSS files in our JS or CSS files,
